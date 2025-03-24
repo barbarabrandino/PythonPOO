@@ -7,5 +7,8 @@ class pessoa:
         self.idade=idade 
      
     @classmethod
-    def criar_pessoa (cls):
-           
+    def criar_pessoa (cls,nome,idade):
+        return cls (nome, idade)
+    
+pessoa1= pessoa ("Carlos",49)
+print(f"Nome:{pessoa.nome}, idade:{pessoa.idade}")
