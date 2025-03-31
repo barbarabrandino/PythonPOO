@@ -13,8 +13,8 @@ class ContaBancaria:
     def exibir_saldo(self):
         print(f"Saldo atual de {self.titular}: R$ {self.__saldo:.2f}")
 
-conta1 = ContaBancaria("Alice", 500)
+conta1 = ContaBancaria("Alice", 2040.63)
 conta1.exibir_saldo()
 
-conta1.depositar(200)
+conta1.depositar(5000.90)
 conta1.exibir_saldo()
