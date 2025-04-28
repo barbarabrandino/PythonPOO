@@ -1,0 +1,1 @@
+#Crie uma classe Banco com um atributo privado __taxa_juros e um método privado __calcular_juros(saldo).

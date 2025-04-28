@@ -1,0 +1,1 @@
+#Tarefa: Crie uma classe Cliente com um atributo privado __cpf, um método cadastrar_cliente() e um método estático validar_cpf(cpf).

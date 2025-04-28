@@ -13,7 +13,7 @@ class Livro:
         return cls(titulo, autor)
 
 
-# Exemplo de uso
+
 livro1 = Livro.criar_livro("1984", "George Orwell")
 livro2 = Livro.criar_livro("Dom Casmurro", "Machado de Assis")
 

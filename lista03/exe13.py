@@ -1,0 +1,1 @@
+# Crie uma classe Loja que mantém um atributo protegido _estoque e um método adicionar_produto(produto) para modificar o estoque
