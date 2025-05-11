@@ -20,9 +20,9 @@ class Cliente:
         return True
     
 c1= Cliente("Ana")
-c2=("Claudio")
+c2= Cliente("Claudio")
 
 c1.cadastrar_cliente("46800954430")
-c2.cadastarcliente("23467812340")
+c2.cadastrar_cliente("23467812340")
 Cliente.validar_cpf("46800954430")
 Cliente.validar_cpf("23467812340")

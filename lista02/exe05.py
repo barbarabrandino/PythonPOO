@@ -9,5 +9,5 @@ class pessoa:
     def apresentar (self):
         return(f"Meu nome é {self.nome} e tenho {self.idade} anos!")
     
-pessoa1= pessoa("Bruna", 24)
+pessoa1= pessoa("Bruno", 24)
 print(pessoa1.apresentar())
