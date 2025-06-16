@@ -1,0 +1,153 @@
+import math
+
+# 1. Animal, Cachorro, Gato
+class Animal:
+    def falar(self):
+        return "Som genérico"
+
+class Cachorro(Animal):
+    def falar(self):
+        return "Au au"
+
+class Gato(Animal):
+    def falar(self):
+        return "Miau"
+
+# 2. Funcionario, Gerente
+class Funcionario:
+    def __init__(self, nome, salario):
+        self.nome = nome
+        self.salario = salario
+
+class Gerente(Funcionario):
+    def __init__(self, nome, salario, departamento):
+        super().__init__(nome, salario)
+        self.departamento = departamento
+
+# 3. Veiculo, Carro, Moto
+class Veiculo:
+    def __init__(self, marca, ano):
+        self.marca = marca
+        self.ano = ano
+
+class Carro(Veiculo):
+    def __init__(self, marca, ano, portas):
+        super().__init__(marca, ano)
+        self.portas = portas
+
+    def abrir_porta_malas(self):
+        return "Porta-malas aberto"
+
+class Moto(Veiculo):
+    def __init__(self, marca, ano, cilindradas):
+        super().__init__(marca, ano)
+        self.cilindradas = cilindradas
+
+    def empinar(self):
+        return "Moto empinando!"
+
+# 4. Forma, Quadrado, Círculo
+class Forma:
+    def calcular_area(self):
+        pass
+
+class Quadrado(Forma):
+    def __init__(self, lado):
+        self.lado = lado
+
+    def calcular_area(self):
+        return self.lado ** 2
+
+class Circulo(Forma):
+    def __init__(self, raio):
+        self.raio = raio
+
+    def calcular_area(self):
+        return math.pi * self.raio ** 2
+
+# 5. Pessoa, Aluno
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+class Aluno(Pessoa):
+    def __init__(self, nome, idade, matricula):
+        super().__init__(nome, idade)
+        self.matricula = matricula
+
+# 6. SerVivo, Animal, Passaro
+class SerVivo:
+    def identificar(self):
+        return "Sou um ser vivo"
+
+class Animal(SerVivo):
+    def identificar(self):
+        return "Sou um animal"
+
+class Passaro(Animal):
+    def identificar(self):
+        return "Sou um pássaro"
+
+# 7. Funcionario, Programador
+class Funcionario:
+    def __init__(self, nome, salario):
+        self.nome = nome
+        self.salario = salario
+
+class Programador(Funcionario):
+    def __init__(self, nome, salario, linguagem):
+        super().__init__(nome, salario)
+        self.linguagem = linguagem
+
+# 8. Conta, ContaCorrente
+class Conta:
+    def __init__(self, saldo):
+        self.saldo = saldo
+
+    def depositar(self, valor):
+        self.saldo += valor
+
+    def sacar(self, valor):
+        if valor <= self.saldo:
+            self.saldo -= valor
+            return True
+        return False
+
+class ContaCorrente(Conta):
+    def __init__(self, saldo, limite):
+        super().__init__(saldo)
+        self.limite = limite
+
+    def sacar(self, valor):
+        if valor <= self.saldo + self.limite:
+            self.saldo -= valor
+            return True
+        return False
+
+# 9. Personagem, Guerreiro, Mago
+class Personagem:
+    def __init__(self, vida, forca):
+        self.vida = vida
+        self.forca = forca
+
+class Guerreiro(Personagem):
+    def habilidade(self):
+        return "Ataque com espada"
+
+class Mago(Personagem):
+    def habilidade(self):
+        return "Lançar feitiço"
+
+# 10. Professor, Pesquisador, Cientista
+class Professor:
+    def trabalhar(self):
+        return "Dando aula"
+
+class Pesquisador:
+    def trabalhar(self):
+        return "Fazendo pesquisa"
+
+class Cientista(Professor, Pesquisador):
+    def trabalhar(self):
+        return f"{Professor.trabalhar(self)} e {Pesquisador.trabalhar(self)}"
