@@ -1,153 +1,143 @@
 import math
 
-# 1. Animal, Cachorro, Gato
-class Animal:
-    def falar(self):
-        return "Som genérico"
+# 1️⃣ Carro e Moto com método acelerar()
+class Carro:
+    def acelerar(self):
+        return "Carro acelerando com motor potente!"
 
-class Cachorro(Animal):
-    def falar(self):
-        return "Au au"
+class Moto:
+    def acelerar(self):
+        return "Moto acelerando com ronco esportivo!"
 
-class Gato(Animal):
-    def falar(self):
-        return "Miau"
-
-# 2. Funcionario, Gerente
+# 2️⃣ FuncionarioCLT e FuncionarioPJ com cálculo de salário diferente
 class Funcionario:
-    def __init__(self, nome, salario):
+    def __init__(self, nome, salario_base):
         self.nome = nome
-        self.salario = salario
+        self.salario_base = salario_base
 
-class Gerente(Funcionario):
-    def __init__(self, nome, salario, departamento):
-        super().__init__(nome, salario)
-        self.departamento = departamento
+    def calcular_salario(self):
+        return 0
 
-# 3. Veiculo, Carro, Moto
-class Veiculo:
-    def __init__(self, marca, ano):
-        self.marca = marca
-        self.ano = ano
+class FuncionarioCLT(Funcionario):
+    def calcular_salario(self):
+        return self.salario_base - (self.salario_base * 0.1)  # desconto de 10%
 
-class Carro(Veiculo):
-    def __init__(self, marca, ano, portas):
-        super().__init__(marca, ano)
-        self.portas = portas
+class FuncionarioPJ(Funcionario):
+    def calcular_salario(self):
+        return self.salario_base  # sem desconto
 
-    def abrir_porta_malas(self):
-        return "Porta-malas aberto"
+# 3️⃣ Sistema de envio de mensagens
+class Email:
+    def enviar_mensagem(self):
+        return "Enviando mensagem por Email."
 
-class Moto(Veiculo):
-    def __init__(self, marca, ano, cilindradas):
-        super().__init__(marca, ano)
-        self.cilindradas = cilindradas
+class SMS:
+    def enviar_mensagem(self):
+        return "Enviando mensagem por SMS."
 
-    def empinar(self):
-        return "Moto empinando!"
+class Whatsapp:
+    def enviar_mensagem(self):
+        return "Enviando mensagem por WhatsApp."
 
-# 4. Forma, Quadrado, Círculo
-class Forma:
+# 4️⃣ Sistema de animais com movimentar()
+class Passaro:
+    def movimentar(self):
+        return "Voando pelos céus."
+
+class Peixe:
+    def movimentar(self):
+        return "Nadando no oceano."
+
+# 5️⃣ FormaGeometrica, Quadrado e Circulo
+class FormaGeometrica:
     def calcular_area(self):
         pass
 
-class Quadrado(Forma):
+class Quadrado(FormaGeometrica):
     def __init__(self, lado):
         self.lado = lado
 
     def calcular_area(self):
         return self.lado ** 2
 
-class Circulo(Forma):
+class Circulo(FormaGeometrica):
     def __init__(self, raio):
         self.raio = raio
 
     def calcular_area(self):
         return math.pi * self.raio ** 2
 
-# 5. Pessoa, Aluno
-class Pessoa:
-    def __init__(self, nome, idade):
-        self.nome = nome
-        self.idade = idade
+# 6️⃣ Transporte com custo_viagem(distancia)
+class Onibus:
+    def custo_viagem(self, distancia):
+        return distancia * 0.5  # R$0,50/km
 
-class Aluno(Pessoa):
-    def __init__(self, nome, idade, matricula):
-        super().__init__(nome, idade)
-        self.matricula = matricula
+class Bicicleta:
+    def custo_viagem(self, distancia):
+        return 0  # gratuita
 
-# 6. SerVivo, Animal, Passaro
-class SerVivo:
-    def identificar(self):
-        return "Sou um ser vivo"
+class CarroTransporte:
+    def custo_viagem(self, distancia):
+        return distancia * 0.8  # R$0,80/km
 
-class Animal(SerVivo):
-    def identificar(self):
-        return "Sou um animal"
+# 7️⃣ Arquivo com método abrir()
+class Arquivo:
+    def abrir(self):
+        pass
 
-class Passaro(Animal):
-    def identificar(self):
-        return "Sou um pássaro"
+class ArquivoTexto(Arquivo):
+    def abrir(self):
+        return "Abrindo arquivo de texto."
 
-# 7. Funcionario, Programador
-class Funcionario:
-    def __init__(self, nome, salario):
-        self.nome = nome
-        self.salario = salario
+class ArquivoImagem(Arquivo):
+    def abrir(self):
+        return "Abrindo imagem."
 
-class Programador(Funcionario):
-    def __init__(self, nome, salario, linguagem):
-        super().__init__(nome, salario)
-        self.linguagem = linguagem
+class ArquivoVideo(Arquivo):
+    def abrir(self):
+        return "Abrindo vídeo."
 
-# 8. Conta, ContaCorrente
-class Conta:
-    def __init__(self, saldo):
-        self.saldo = saldo
+# 8️⃣ Streaming com reproduzir()
+class Filme:
+    def reproduzir(self):
+        return "Reproduzindo filme."
 
-    def depositar(self, valor):
-        self.saldo += valor
+class Musica:
+    def reproduzir(self):
+        return "Tocando música."
 
-    def sacar(self, valor):
-        if valor <= self.saldo:
-            self.saldo -= valor
-            return True
-        return False
+# 9️⃣ Sistema de notificações
+class NotificacaoEmail:
+    def enviar(self):
+        return "Notificação enviada por Email."
 
-class ContaCorrente(Conta):
-    def __init__(self, saldo, limite):
-        super().__init__(saldo)
-        self.limite = limite
+class NotificacaoSMS:
+    def enviar(self):
+        return "Notificação enviada por SMS."
 
-    def sacar(self, valor):
-        if valor <= self.saldo + self.limite:
-            self.saldo -= valor
-            return True
-        return False
+class NotificacaoPush:
+    def enviar(self):
+        return "Notificação enviada por Push."
 
-# 9. Personagem, Guerreiro, Mago
-class Personagem:
-    def __init__(self, vida, forca):
-        self.vida = vida
-        self.forca = forca
+# 🔟 Pagamento com processamento em lista
+class Pagamento:
+    def processar(self):
+        pass
 
-class Guerreiro(Personagem):
-    def habilidade(self):
-        return "Ataque com espada"
+class PagamentoCartao(Pagamento):
+    def processar(self):
+        return "Processando pagamento com cartão."
 
-class Mago(Personagem):
-    def habilidade(self):
-        return "Lançar feitiço"
+class PagamentoPix(Pagamento):
+    def processar(self):
+        return "Processando pagamento via Pix."
 
-# 10. Professor, Pesquisador, Cientista
-class Professor:
-    def trabalhar(self):
-        return "Dando aula"
+class PagamentoBoleto(Pagamento):
+    def processar(self):
+        return "Processando pagamento com boleto."
 
-class Pesquisador:
-    def trabalhar(self):
-        return "Fazendo pesquisa"
+# Simulação do processamento
+pagamentos = [PagamentoCartao(), PagamentoPix(), PagamentoBoleto()]
+for p in pagamentos:
+    print(p.processar())
 
-class Cientista(Professor, Pesquisador):
-    def trabalhar(self):
-        return f"{Professor.trabalhar(self)} e {Pesquisador.trabalhar(self)}"
