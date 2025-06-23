@@ -1,3 +1,4 @@
+
 # Modele um sistema de envio de mensagens com as classes Email, SMS e Whatsapp. Todas devem ter o método enviar_mensagem().
 
 class EnvioMensagens:
@@ -27,3 +28,4 @@ mensagens = [
 
 for mensagem in mensagens:
     mensagem.enviar_mensagem()  
+    

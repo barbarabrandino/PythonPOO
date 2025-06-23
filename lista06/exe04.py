@@ -1,3 +1,4 @@
+
 #Crie um sistema de animais com as classes Passaro e Peixe, ambas com o método movimentar().
 class Animal:
     def __init__(self, nome):
@@ -26,6 +27,7 @@ animais = [
 
 for animal in animais:
     animal.movimentar()
+
 
 
 

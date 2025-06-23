@@ -39,3 +39,19 @@ funcionarios = [
 for funcionario in funcionarios:
     print(f"{funcionario.nome} - Salário: R${funcionario.calcular_salario():.2f}")
 
+class Funcionario:
+    def __init__(self, nome, salario_base):
+        self.nome = nome
+        self.salario_base = salario_base
+
+    def calcular_salario(self):
+        return 0
+
+class FuncionarioCLT(Funcionario):
+    def calcular_salario(self):
+        return self.salario_base - (self.salario_base * 0.1) 
+    
+class FuncionarioPJ(Funcionario):
+    def calcular_salario(self):
+        return self.salario_base 
+    
