@@ -1,153 +1,77 @@
-import math
-
-# 1. Animal, Cachorro, Gato
-class Animal:
-    def falar(self):
-        return "Som genérico"
-
-class Cachorro(Animal):
-    def falar(self):
-        return "Au au"
-
-class Gato(Animal):
-    def falar(self):
-        return "Miau"
-
-# 2. Funcionario, Gerente
+# Superclasse
 class Funcionario:
-    def __init__(self, nome, salario):
+    def __init__(self, nome):
         self.nome = nome
-        self.salario = salario
 
-class Gerente(Funcionario):
-    def __init__(self, nome, salario, departamento):
-        super().__init__(nome, salario)
-        self.departamento = departamento
+    def calcular_salario(self):
+        raise NotImplementedError("Este método deve ser implementado nas subclasses.")
 
-# 3. Veiculo, Carro, Moto
-class Veiculo:
-    def __init__(self, marca, ano):
-        self.marca = marca
-        self.ano = ano
 
-class Carro(Veiculo):
-    def __init__(self, marca, ano, portas):
-        super().__init__(marca, ano)
-        self.portas = portas
+# Subclasse CLT
+class FuncionarioCLT(Funcionario):
+    def __init__(self, nome, salario_mensal):
+        super().__init__(nome)
+        self.salario_mensal = salario_mensal
 
-    def abrir_porta_malas(self):
-        return "Porta-malas aberto"
+    def calcular_salario(self):
+        # CLT recebe salário fixo
+        return self.salario_mensal
 
-class Moto(Veiculo):
-    def __init__(self, marca, ano, cilindradas):
-        super().__init__(marca, ano)
-        self.cilindradas = cilindradas
 
-    def empinar(self):
-        return "Moto empinando!"
+# Subclasse PJ
+class FuncionarioPJ(Funcionario):
+    def __init__(self, nome, valor_hora, horas_trabalhadas):
+        super().__init__(nome)
+        self.valor_hora = valor_hora
+        self.horas_trabalhadas = horas_trabalhadas
 
-# 4. Forma, Quadrado, Círculo
-class Forma:
-    def calcular_area(self):
-        pass
+    def calcular_salario(self):
+        # PJ é pago por hora
+        return self.valor_hora * self.horas_trabalhadas
 
-class Quadrado(Forma):
-    def __init__(self, lado):
-        self.lado = lado
 
-    def calcular_area(self):
-        return self.lado ** 2
+# Exemplo de uso
+clt = FuncionarioCLT("João", 3000)
+pj = FuncionarioPJ("Maria", 100, 80)
 
-class Circulo(Forma):
-    def __init__(self, raio):
-        self.raio = raio
+print(f"{clt.nome} (CLT) - Salário: R${clt.calcular_salario():.2f}")
+print(f"{pj.nome} (PJ) - Salário: R${pj.calcular_salario():.2f}")
 
-    def calcular_area(self):
-        return math.pi * self.raio ** 2
 
-# 5. Pessoa, Aluno
-class Pessoa:
-    def __init__(self, nome, idade):
-        self.nome = nome
-        self.idade = idade
+# Superclasse
+class Mensagem:
+    def __init__(self, destinatario, conteudo):
+        self.destinatario = destinatario
+        self.conteudo = conteudo
 
-class Aluno(Pessoa):
-    def __init__(self, nome, idade, matricula):
-        super().__init__(nome, idade)
-        self.matricula = matricula
+    def enviar_mensagem(self):
+        raise NotImplementedError("Este método deve ser implementado pelas subclasses.")
 
-# 6. SerVivo, Animal, Passaro
-class SerVivo:
-    def identificar(self):
-        return "Sou um ser vivo"
 
-class Animal(SerVivo):
-    def identificar(self):
-        return "Sou um animal"
+# Subclasse: Email
+class Email(Mensagem):
+    def enviar_mensagem(self):
+        print(f"Enviando Email para {self.destinatario}: {self.conteudo}")
 
-class Passaro(Animal):
-    def identificar(self):
-        return "Sou um pássaro"
 
-# 7. Funcionario, Programador
-class Funcionario:
-    def __init__(self, nome, salario):
-        self.nome = nome
-        self.salario = salario
+# Subclasse: SMS
+class SMS(Mensagem):
+    def enviar_mensagem(self):
+        print(f"Enviando SMS para {self.destinatario}: {self.conteudo}")
 
-class Programador(Funcionario):
-    def __init__(self, nome, salario, linguagem):
-        super().__init__(nome, salario)
-        self.linguagem = linguagem
 
-# 8. Conta, ContaCorrente
-class Conta:
-    def __init__(self, saldo):
-        self.saldo = saldo
+# Subclasse: Whatsapp
+class Whatsapp(Mensagem):
+    def enviar_mensagem(self):
+        print(f"Enviando mensagem no WhatsApp para {self.destinatario}: {self.conteudo}")
 
-    def depositar(self, valor):
-        self.saldo += valor
 
-    def sacar(self, valor):
-        if valor <= self.saldo:
-            self.saldo -= valor
-            return True
-        return False
+# Exemplo de uso
+email = Email("joao@email.com", "Olá João, tudo bem?")
+sms = SMS("+559199999999", "Sua verificação é 123456.")
+whatsapp = Whatsapp("+559198888888", "Oi! Chegarei às 18h.")
 
-class ContaCorrente(Conta):
-    def __init__(self, saldo, limite):
-        super().__init__(saldo)
-        self.limite = limite
+email.enviar_mensagem()
+sms.enviar_mensagem()
+whatsapp.enviar_mensagem()
 
-    def sacar(self, valor):
-        if valor <= self.saldo + self.limite:
-            self.saldo -= valor
-            return True
-        return False
-
-# 9. Personagem, Guerreiro, Mago
-class Personagem:
-    def __init__(self, vida, forca):
-        self.vida = vida
-        self.forca = forca
-
-class Guerreiro(Personagem):
-    def habilidade(self):
-        return "Ataque com espada"
-
-class Mago(Personagem):
-    def habilidade(self):
-        return "Lançar feitiço"
-
-# 10. Professor, Pesquisador, Cientista
-class Professor:
-    def trabalhar(self):
-        return "Dando aula"
-
-class Pesquisador:
-    def trabalhar(self):
-        return "Fazendo pesquisa"
-
-class Cientista(Professor, Pesquisador):
-    def trabalhar(self):
-        return f"{Professor.trabalhar(self)} e {Pesquisador.trabalhar(self)}"
