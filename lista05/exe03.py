@@ -19,3 +19,12 @@ class Moto(Veiculo):
     def empinar(self):
         return "Moto empinando!"
     
+
+carro1 = Carro("Toyota", 2022, 4)
+moto1 = Moto("Honda", 2021, 250)
+
+print(f"Carro: {carro1.marca}, Ano: {carro1.ano}, Portas: {carro1.portas}")
+print(carro1.abrir_porta_malas())
+
+print(f"Moto: {moto1.marca}, Ano: {moto1.ano}, Cilindradas: {moto1.cilindradas}")
+print(moto1.empinar())

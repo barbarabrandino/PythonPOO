@@ -18,5 +18,9 @@ class Circulo(Forma):
     def calcular_area(self):
         return math.pi * self.raio ** 2
 
-print(Quadrado.calcular_area(6))
-print(Circulo.calcular_area(8))
+q = Quadrado(6)
+c = Circulo(8)
+
+
+print(f"Área do quadrado: {q.calcular_area():.2f}")
+print(f"Área do círculo: {c.calcular_area():.2f}")
